@@ -10,175 +10,152 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background-color: #fff0f5;
             font-family: 'Arial', 'Helvetica', sans-serif;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
             background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
             background-repeat: repeat;
             background-size: 180px;
         }
-
         .container {
             text-align: center;
-            background: rgba(255, 182, 193, 0.75);
+            background: rgba(255, 182, 193, 0.82);
             padding: 40px 20px;
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.25);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
             position: relative;
             z-index: 10;
             max-width: 90%;
-            margin: 40px auto;
+            margin: 30px auto;
         }
-
         h1 {
             color: #c2185b;
-            font-size: clamp(1.8rem, 6vw, 2.8rem);
-            margin-bottom: 35px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            font-size: clamp(1.9rem, 6.5vw, 3rem);
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
             animation: gentlePulse 4s infinite ease-in-out;
         }
-
         @keyframes gentlePulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+            50% { transform: scale(1.04); }
         }
-
+        .timer {
+            font-size: 1.2rem;
+            color: #c2185b;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
         .buttons {
             position: relative;
-            min-height: 100px;
+            min-height: 120px;
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
             margin: 0 auto;
         }
-
         button {
-            padding: clamp(12px, 4vw, 18px) clamp(25px, 6vw, 45px);
-            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            padding: clamp(14px, 4.5vw, 20px) clamp(30px, 7vw, 50px);
+            font-size: clamp(1.2rem, 4.5vw, 1.6rem);
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.25s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            user-select: none;
         }
-
         #yes {
             background: linear-gradient(135deg, #4caf50, #81c784);
             color: white;
             position: absolute;
             top: 50%;
-            left: 20%;
+            left: 25%;
             transform: translate(-50%, -50%);
         }
-
         #no {
             background: linear-gradient(135deg, #ef5350, #e57373);
             color: white;
             position: absolute;
             top: 50%;
-            right: 20%;
+            right: 25%;
             transform: translate(50%, -50%);
         }
-
         .flower {
             position: absolute;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            opacity: 0.35;
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            opacity: 0.4;
             pointer-events: none;
-            animation: float 8s infinite ease-in-out;
+            animation: float 9s infinite ease-in-out;
         }
-
-        .flower1 { top: 10%; left: 8%; animation-delay: 0s; }
-        .flower2 { top: 35%; right: 10%; animation-delay: 2.5s; }
-        .flower3 { bottom: 15%; left: 12%; animation-delay: 4s; }
-        .flower4 { bottom: 25%; right: 15%; animation-delay: 1.5s; }
-
+        .flower1 { top: 8%; left: 6%; animation-delay: 0s; }
+        .flower2 { top: 40%; right: 8%; animation-delay: 2.8s; }
+        .flower3 { bottom: 12%; left: 10%; animation-delay: 4.5s; }
+        .flower4 { bottom: 28%; right: 12%; animation-delay: 1.2s; }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(8deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
         }
-
         #bear-container {
             position: fixed;
-            top: -200px;
+            top: -250px;
             left: 50%;
             transform: translateX(-50%);
             pointer-events: none;
             z-index: 5;
-            transition: top 0.7s ease-out;
+            transition: top 0.8s ease-out;
         }
-
         #bear {
-            width: clamp(120px, 35vw, 180px);
+            width: clamp(130px, 38vw, 200px);
             height: auto;
-            opacity: 0.95;
-            animation: jumpFromTop 1.4s ease-out forwards;
+            opacity: 0.97;
+            animation: jumpFromTop 1.5s ease-out forwards;
         }
-
         @keyframes jumpFromTop {
-            0% {
-                transform: translateY(-100px) scale(0.6);
-                opacity: 0;
-            }
-            40% {
-                transform: translateY(180px) scale(1.15);
-                opacity: 1;
-            }
-            60% {
-                transform: translateY(60px) scale(0.95);
-            }
-            80% {
-                transform: translateY(140px) scale(1.05);
-            }
-            100% {
-                transform: translateY(0) scale(1);
-            }
+            0%   { transform: translateY(-120px) scale(0.5); opacity: 0; }
+            40%  { transform: translateY(200px) scale(1.2);  opacity: 1; }
+            60%  { transform: translateY(70px)  scale(0.92); }
+            80%  { transform: translateY(160px) scale(1.08); }
+            100% { transform: translateY(0)     scale(1);    }
         }
-
         footer {
             position: fixed;
-            bottom: 10px;
+            bottom: 12px;
             left: 0;
             right: 0;
             text-align: center;
-            color: #666;
-            font-size: 0.95rem;
+            color: #555;
+            font-size: 0.9rem;
             z-index: 5;
         }
-
         footer a {
             color: #c2185b;
             text-decoration: none;
             font-weight: bold;
         }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
         @media (max-width: 600px) {
             .buttons {
-                min-height: 140px;
+                min-height: 180px;
             }
             #yes, #no {
                 position: static;
                 transform: none;
                 display: block;
-                margin: 20px auto;
-                width: 80%;
-                max-width: 300px;
+                margin: 25px auto;
+                width: 85%;
+                max-width: 320px;
+            }
+            .timer {
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Will you be my Valentine? 💖</h1>
+        <div class="timer" id="timer">Time left to catch me: 4:00</div>
         <div class="buttons">
             <button id="yes">Yes 😍</button>
             <button id="no">No 😢</button>
@@ -191,7 +168,7 @@
     <div class="flower flower3">🌷</div>
     <div class="flower flower4">💐</div>
 
-    <!-- Stuffed bear container (jumps from top) -->
+    <!-- Stuffed bear container -->
     <div id="bear-container">
         <img id="bear" src="https://media.tenor.com/NhawLnedTFEAAAAe/love-milk-and-mocha-bear.png" alt="Cute jumping teddy bear">
     </div>
@@ -204,62 +181,111 @@
         const yesBtn = document.getElementById('yes');
         const noBtn = document.getElementById('no');
         const bearContainer = document.getElementById('bear-container');
-        let noScale = 1;
+        const timerDisplay = document.getElementById('timer');
 
-        // Yes button playful movement – always stays visible on screen
-        function moveYesButton() {
-            const padding = 40;
+        let noScale = 1;
+        let timeLeft = 240; // 4 minutes in seconds
+        let gameActive = true;
+        let timerInterval;
+
+        // Format time MM:SS
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = seconds % 60;
+            return `${min}:${sec.toString().padStart(2, '0')}`;
+        }
+
+        // Start countdown
+        function startTimer() {
+            timerDisplay.textContent = `Time left to catch me: ${formatTime(timeLeft)}`;
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = `Time left to catch me: ${formatTime(timeLeft)}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = "Okay okay... you win! Click me now 💕";
+                    gameActive = false;
+                    yesBtn.style.transition = 'none';
+                    yesBtn.style.position = 'static';
+                    yesBtn.style.transform = 'translate(0,0) scale(1.15)';
+                    yesBtn.style.left = '50%';
+                    yesBtn.style.top = '50%';
+                    yesBtn.style.margin = '0 auto';
+                }
+            }, 1000);
+        }
+
+        // Move Yes button to a random position (stays on screen)
+        function moveYesButton(e) {
+            if (!gameActive) return;
+
+            // Prevent default on touch devices
+            if (e) e.preventDefault();
+
+            const padding = 50;
             const maxX = window.innerWidth - yesBtn.offsetWidth - padding * 2;
             const maxY = window.innerHeight - yesBtn.offsetHeight - padding * 2;
 
             const randomX = padding + Math.random() * maxX;
             const randomY = padding + Math.random() * maxY;
 
-            yesBtn.style.transition = 'all 0.9s ease-out';
+            yesBtn.style.transition = 'all 0.45s ease-out'; // faster movement = harder
             yesBtn.style.left = randomX + 'px';
             yesBtn.style.top = randomY + 'px';
-            yesBtn.style.transform = 'scale(1.08)';
+            yesBtn.style.transform = 'scale(1.12)';
 
             setTimeout(() => {
                 yesBtn.style.transform = 'scale(1)';
-            }, 900);
+            }, 450);
         }
 
+        // Make it even harder: move on mousedown / touchstart too
         yesBtn.addEventListener('mouseover', moveYesButton);
-        yesBtn.addEventListener('touchstart', moveYesButton); // for mobile
+        yesBtn.addEventListener('mousedown', moveYesButton);
+        yesBtn.addEventListener('touchstart', moveYesButton, { passive: false });
 
+        // When finally clicked
         yesBtn.addEventListener('click', () => {
-            alert("Yay! You caught me! 💕 Happy Valentine's Day!");
+            if (!gameActive) {
+                alert("Yay! You caught me! 💕 Happy Valentine's Day my love!");
+            } else {
+                alert("Not so fast! 😏 Keep trying... 💖");
+                moveYesButton(); // immediate dodge
+            }
         });
 
-        // No button grows on hover & click + bear jumps from top
+        // No button behavior
         noBtn.addEventListener('mouseover', () => {
-            noScale += 0.35;
+            noScale += 0.4;
             noBtn.style.transform = `scale(${noScale})`;
         });
 
         noBtn.addEventListener('click', () => {
-            noScale += 0.5;
+            noScale += 0.6;
             noBtn.style.transform = `scale(${noScale})`;
 
-            // Trigger bear jump from top
-            bearContainer.style.top = '-200px'; // reset position
-            void bearContainer.offsetWidth; // force reflow to restart animation
-            bearContainer.style.top = '20%'; // or adjust as needed (20% from top)
-
+            // Bear jump
+            bearContainer.style.top = '-250px';
+            void bearContainer.offsetWidth;
+            bearContainer.style.top = '15%';
             setTimeout(() => {
-                bearContainer.style.top = '-200px';
-            }, 1800);
+                bearContainer.style.top = '-250px';
+            }, 2000);
         });
 
-        // Occasional random movement for Yes button
-        setInterval(() => {
-            if (Math.random() > 0.5) moveYesButton();
-        }, 5000);
+        // Start the timer when page loads
+        startTimer();
 
-        // Make sure Yes stays in view on resize
+        // Occasional random movement even without hovering
+        setInterval(() => {
+            if (gameActive && Math.random() > 0.4) {
+                moveYesButton();
+            }
+        }, 3800);
+
+        // Keep button in view on resize
         window.addEventListener('resize', () => {
-            if (parseFloat(yesBtn.style.left) > window.innerWidth - yesBtn.offsetWidth) {
+            if (gameActive && parseFloat(yesBtn.style.left) > window.innerWidth - yesBtn.offsetWidth - 50) {
                 moveYesButton();
             }
         });
