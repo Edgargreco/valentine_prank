@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Surprise 💕</title>
+    <title>Valentine's Challenge 💌</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
@@ -40,7 +40,7 @@
         }
         .buttons {
             position: relative;
-            height: 80vh; /* gives lots of space to move around on mobile */
+            height: 70vh; /* space for dodging */
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
@@ -57,19 +57,19 @@
             position: absolute;
             user-select: none;
             -webkit-user-select: none;
-            touch-action: manipulation; /* helps with touch responsiveness */
+            touch-action: manipulation;
         }
         #yes {
             background: linear-gradient(135deg, #4caf50, #81c784);
             color: white;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
         #no {
             background: linear-gradient(135deg, #ef5350, #e57373);
             color: white;
-            top: 65%;
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
@@ -87,28 +87,6 @@
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-25px) rotate(8deg); }
-        }
-        #bear-container {
-            position: fixed;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 5;
-            transition: top 0.7s ease-out;
-        }
-        #bear {
-            width: clamp(120px, 35vw, 180px);
-            height: auto;
-            opacity: 0.95;
-            animation: jumpFromTop 1.4s ease-out forwards;
-        }
-        @keyframes jumpFromTop {
-            0% { transform: translateY(-100px) scale(0.6); opacity: 0; }
-            40% { transform: translateY(180px) scale(1.15); opacity: 1; }
-            60% { transform: translateY(60px) scale(0.95); }
-            80% { transform: translateY(140px) scale(1.05); }
-            100% { transform: translateY(0) scale(1); }
         }
         footer {
             position: fixed;
@@ -135,13 +113,15 @@
             text-align: center;
             padding: 20px;
         }
-        .heart { font-size: 5rem; animation: burst 1s infinite; }
-        @keyframes burst { 0%,100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+        .heart { font-size: 6rem; animation: burst 1.5s infinite; }
+        @keyframes burst { 0%,100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+        .gift-img { max-width: 80%; height: auto; margin: 20px 0; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Will you be my Valentine? 💖</h1>
+        <h1>Can You Catch the Yes Button? 💌</h1>
+        <p style="font-size: 1.3rem; margin-bottom: 30px; color: #c2185b;">Try to click Yes... but it runs away!. Click Yes for a surprise gift from grecotech&graphix 🎁</p>
         <div class="buttons">
             <button id="yes">Yes 😍</button>
             <button id="no">No 😢</button>
@@ -153,42 +133,38 @@
     <div class="flower flower3">🌷</div>
     <div class="flower flower4">💐</div>
 
-    <div id="bear-container">
-        <img id="bear" src="https://media.tenor.com/NhawLnedTFEAAAAe/love-milk-and-mocha-bear.png" alt="Cute jumping teddy bear">
-    </div>
-
     <div id="success">
-        <div class="heart">💖</div>
-        <div>Yay! I knew you'd say YES! 😍</div>
-        <div style="font-size:1.5rem; margin-top:20px;">Happy Valentine's Day, my love!<br>I love you so much ❤️</div>
+        <div class="heart">🎉💖</div>
+        <div>Happy Valentine's Day!</div>
+        <div style="font-size:1.8rem; margin: 20px 0;">Thanks for clicking Yes!</div>
+        <div style="font-size:1.4rem; margin-bottom: 20px;">You've earned a special gift from grecotech&graphix 🎁</div>
+        <img class="gift-img" src="https://img.freepik.com/free-photo/cute-gift-valentine-s-day_329181-1618.jpg" alt="Cute Valentine's gift box">
+        <div style="font-size:1.2rem; color:#666;">Check your messages or DM grecotechgraphix for your gift details! ❤️</div>
     </div>
 
     <footer>
-        Made with love 💖 by grecotech&graphix • <a href="https://grecotechgraphix.com" target="_blank">grecotechgraphix.com</a>
+        made by grecotech&graphix • <a href="https://grecotechgraphix.com" target="_blank">grecotechgraphix.com</a>
     </footer>
 
     <script>
         const yesBtn = document.getElementById('yes');
         const noBtn = document.getElementById('no');
-        const bearContainer = document.getElementById('bear-container');
         const success = document.getElementById('success');
         let noScale = 1;
         let canMove = true;
 
         function moveYesButton(e) {
             if (!canMove) return;
-
-            // Prevent scrolling interference on touch
             if (e && e.preventDefault) e.preventDefault();
 
-            const padding = 60; // more margin on mobile
+            const padding = 60;
             const maxX = window.innerWidth - yesBtn.offsetWidth - padding * 2;
             const maxY = window.innerHeight - yesBtn.offsetHeight - padding * 2;
 
             const randomX = padding + Math.random() * maxX;
             const randomY = padding + Math.random() * maxY;
 
-            yesBtn.style.transition = 'all 0.35s ease-out'; // faster on touch
+            yesBtn.style.transition = 'all 0.35s ease-out';
             yesBtn.style.left = randomX + 'px';
             yesBtn.style.top = randomY + 'px';
             yesBtn.style.transform = 'translate(0,0) scale(1.12)';
@@ -197,40 +173,30 @@
             }, 350);
         }
 
-        // Desktop: mouse
         yesBtn.addEventListener('mouseover', moveYesButton);
-        // Mobile: touchstart + touchmove (moves when they try to tap/chase)
         yesBtn.addEventListener('touchstart', moveYesButton);
         yesBtn.addEventListener('touchmove', moveYesButton);
 
-        // Click/tap success only when not moving
         yesBtn.addEventListener('click', () => {
-            if (!canMove) {
-                success.style.display = 'flex';
-            }
+            if (!canMove) success.style.display = 'flex';
         });
-        yesBtn.addEventListener('touchend', (e) => {
-            if (!canMove) {
-                success.style.display = 'flex';
-            }
+        yesBtn.addEventListener('touchend', () => {
+            if (!canMove) success.style.display = 'flex';
         });
 
-        // Occasional auto-move
         setInterval(() => {
             if (canMove && Math.random() > 0.55) moveYesButton();
         }, 3500);
 
-        // After 4 min: stop and center
         setTimeout(() => {
             canMove = false;
             yesBtn.style.transition = 'all 0.4s ease';
             yesBtn.style.left = '50%';
-            yesBtn.style.top = '50%';
+            yesBtn.style.top = '40%';
             yesBtn.style.transform = 'translate(-50%, -50%) scale(1)';
             yesBtn.style.cursor = 'pointer';
         }, 240000);
 
-        // No button logic (unchanged)
         noBtn.addEventListener('mouseover', () => {
             noScale += 0.35;
             noBtn.style.transform = `scale(${noScale})`;
@@ -238,25 +204,19 @@
         noBtn.addEventListener('click', () => {
             noScale += 0.5;
             noBtn.style.transform = `scale(${noScale})`;
-            bearContainer.style.top = '-200px';
-            void bearContainer.offsetWidth;
-            bearContainer.style.top = '20%';
-            setTimeout(() => bearContainer.style.top = '-200px', 1800);
         });
-        noBtn.addEventListener('touchstart', () => { // grow on touch too
+        noBtn.addEventListener('touchstart', () => {
             noScale += 0.35;
             noBtn.style.transform = `scale(${noScale})`;
         });
 
-        // Resize handler
         window.addEventListener('resize', () => {
             if (!canMove) {
                 yesBtn.style.left = '50%';
-                yesBtn.style.top = '50%';
+                yesBtn.style.top = '40%';
                 yesBtn.style.transform = 'translate(-50%, -50%)';
             }
         });
     </script>
 </body>
 </html>
-
